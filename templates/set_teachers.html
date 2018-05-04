@@ -15,7 +15,8 @@
             <option value="{{ item.id }}" selected="selected">{{ item.name }}</option>
             {% else %}
             <option value="{{ item.id }}">{{ item.name }}</option>
-            {% endfor %}
+            {% endif %}
+        {% endfor %}
     </select>
     <input type="submit" value="提交">
 </form>

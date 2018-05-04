@@ -14,23 +14,25 @@ def add_classes(request):
     elif request.method == 'POST':
         title = request.POST.get('title','')
         models.Classes.objects.create(titil=title)
-        return redirect('/class.html')
+        return redirect('get_classes.html')
 
 def del_classes(request):
     nid = request.GET.get('nid','')
-    models.Classes.objects.filter(id=nid).delete()
-    return redirect('/class.html')
+    if not nid:
+        models.Classes.objects.filter(id=nid).delete()
+    return redirect('get_classes.html')
 
 def edit_classes(request):
     if request.method == 'GET':
         nid = request.GET.get('nid','')
+
         obj = models.Classes.objects.get(id=nid)
         return render(request,'edit_classes.html',{'obj':obj})
     elif request.method == 'POST':
         nid = request.POST.get('nid','')
         title = request.POST.get('xxoo','')
         models.Classes.objects.filter(id=nid).update(title=title)
-        return redirect('/classes.html')
+        return redirect('get_classes.html')
 
 def set_teachers(request):
     if request.method == 'GET':
@@ -52,4 +54,4 @@ def set_teachers(request):
             ids_int.append(i)
         obj = models.Classes.objects.get(id=nid)
         obj.a.set(ids_int)
-        return redirect('/classes.html')
+        return redirect('/get_classes.html')

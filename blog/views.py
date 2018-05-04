@@ -10,3 +10,9 @@ def archive(request):
     posts = BlogPost.objects.all()
     # return HttpResponse(t.render(c))
     return render(request,'archive.html',{'posts':posts})
+
+
+# Create your views here.
+def blog_index(request):
+    blog_list = BlogPost.objects.all()  # 获取所有数据
+    return render(request,'blog.html', {'blog_list':blog_list})   # 返回index.html页面

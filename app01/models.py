@@ -8,12 +8,16 @@ class Classes(models.Model):
     '''
     title = models.CharField(max_length=32)
     a = models.ManyToManyField('Teachers')
+    def __str__(self):
+        return self.title
 
 class Teachers(models.Model):
     '''
     老师表
     '''
     name = models.CharField(max_length=32)
+    def __str__(self):
+        return self.name
 
 class Students(models.Model):
     '''
@@ -23,3 +27,5 @@ class Students(models.Model):
     age = models.IntegerField()
     gender = models.BooleanField()
     cs = models.ForeignKey(Classes, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.username
