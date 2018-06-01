@@ -15,43 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from cmdb import views as cmdb
-# from app01.views import classes,students,teachers, ajax
-from blog import views as blog
-# from polls import views as polls
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ueditor/',include('DjangoUeditor.urls')),
-    # url(r'^index/',cmdb.index),
     url(r'^cmdb/', include('cmdb.urls')),
     url(r'^polls/', include('polls.urls')),
-    # url(r'^polls/(\d+)/', polls.detail, name='detail'),
-    # url(r'^polls/(\d+)/results/', polls.results, name='results'),
-    # url(r'^polls/(\d+)/vote/', polls.vote, name='vote'),
-
     url(r'^app01/', include('app01.urls')),
-
-
-    # url(r'^classes.html', classes.get_classes),
-    # url(r'^add_classes.html', classes.add_classes),
-    # url(r'^del_classes.html', classes.del_classes),
-    # url(r'^edit_classes.html', classes.edit_classes),
-    #
-    # url(r'^students.html', students.get_students),
-    # url(r'^add_students.html', students.add_students),
-    # url(r'^del_students.html', students.del_students),
-    # url(r'^edit_students.html', students.edit_students),
-    #
-    # url(r'^set_teachers.html', classes.set_teachers),
-    #
-    # url(r'^ajax1.html', ajax.ajax1),
-    # url(r'^ajax2.html', ajax.ajax2),
-    # url(r'^ajax4.html', ajax.ajax4),
-
     url(r'^blog/', include('blog.urls')),
-    # url(r'^blogs/', blog.archive),
-    # url(r'^blog/', blog.blog_index),
-
-
+    # url(r'^blog02/', include('blog02.urls')),
 ]
+
+# if settings.DEBUG:
+#     from django.conf.urls.static import static
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
